@@ -179,6 +179,17 @@
             });            
         </pre> -> added extra function like beforeSend and complete in the ajax request
     </p>
+    <p>
+        <pre>
+            jQuery.noConflict();
+                jQuery(document).ready(function($) {  // Use $ only inside this function
+                console.log("No conflict mode activated!");
+            });
+
+        </pre> -> noConflict() its create jquery won version to avoid same jquery works somewere 
+        Its use to write jquery intude '$', 'jQuery' or any name => name.noConflict()
+
+    </p>
 
 
 </body>
