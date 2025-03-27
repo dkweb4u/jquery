@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+<body>
+    <p>
+        <b>Syntax</b> <br>
+
+        $(document).ready(function(){ <br>
+              --- function code ----- <br>
+        });
+        
+    </p>
+   <hr>
+    <p>
+        <b>selectors</b>
+        <br>
+        $('.classname').text() <br>
+        $('#idname').text() <br>
+        $('[data-role = 'data']').text() // attribute selectors
+    </p>
+  <hr>
+    <p>
+        <b>Event Method</b> <br>
+        $('button').click(function(){
+            $('.value').text('working Fine')
+        })
+    </p>
+    <hr>
+    <p><b>function</b></p>
+    <p>.Click</p> <br>
+    <p>.submit</p> <br>
+    <p>.toggleClass</p> <br>
+    <p>.hover</p> <br>
+<hr>
+    <p><b>Effects</b></p>
+    <p>.fadeIn() -> the element in display none, then its work</p>
+    <p>.fadeOut() -> the element in display block, then its work</p>
+    <p>.fadeToggle() -> the element toggle the element</p>
+    <p>note: inside we can pass time duriation. Ex: .fadeIn(100)</p>
+    <p>toggle() -> its trigger in show or hide function</p>
+    <p>slideDown() -> the element in display none, then its work</p>
+    <p>slideUp() -> the element in display block, then its work</p>
+    <p>slideToggle() -> the element toggle the element</p>
+    <p>animate({
+        left: '200px',
+        height: '200px',
+        width: '200px',
+        top: '200px',
+        opacite: 0.5
+    },2000) -> animation to the element</p>
+    <p>stop() -> stop animation select animate div and do stop() function</p>
+    <p>animate({styles},2000, function (){}) -> 3rd parameter we can pass function also</p>
+    <p>css('property','value').css('property','value') -> multiple css chain we can use in element</p>
+    <p>element.attr('src') -> like this we can get elemnt attribute values</p>
+    <p>element.append('new element') -> add html elements in the another element</p>
+    <p>newelemt.appendTo('oldelement') -> add html elements in the another method</p>
+    <p>remove() -> remove the element</p>
+    <p>empty() -> remove childs in the element</p>
+    <p>addClass() -> add class from element</p>
+    <p>removeClass() -> add class from element</p>
+    <p>.width() and .height() also we add or get drectly in element</p>
+    <p>.parent() -> select one level parent element</p>
+    <p>.parents() -> select all parents and parents of parent in the element</p>
+    <p>.find('element') -> find the element is available in the childs</p>
+    <p>element.siblings() -> find selected element after elements not child elements</p>
+
+    <hr>
+    <p><b>Ajax</b></p>
+    <p>load('file or url') -> fetch the data from file</p>
+    <p> <pre>
+        $.get('data.json',function(data){
+            console.log(data[1].data)
+           }) 
+    </pre> -> get Request From Ajax</p>
+    <p>
+        <pre>
+            $.post('data.php',{key:"value"},function(response){
+                console.log(response)
+               }) 
+        </pre>
+        -> Post Request From Ajax
+    </p>
+    <p>
+        <pre>
+
+            $(document).ajaxStart(function(){
+
+                $('.loading').fadeIn();
+             });
+    
+        </pre> -> Ajax Request Start
+    </p>
+    <p>
+        <pre>
+
+            $(document).ajaxStart(function(){
+
+                $('.loading').fadeIn();
+             });
+    
+        </pre> -> Ajax Request Start
+    </p>
+    <p>
+        <pre>
+            $(document).ajaxStop(function(){
+                $('.loading').fadeOut();
+    
+             })    
+        </pre> -> Ajax Request End
+    </p>
+    <p>
+        <pre>
+            $.ajax(
+                { 
+                 url:"https://jsonplaceholder.typicode.com/todos/",
+                 method: "GET",
+                 success: function(data){
+                     console.log(data);
+                 },
+                 error: function(){
+                     console.log("Error");
+                 }
+             }
+              );
+        </pre> -> ajax get Request with success and error functions
+    </p>
+    <p>
+        <pre>
+            $("#myForm").submit(function (event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: "process.php", 
+                    type: "POST",
+                    data: formData,  // or data in object JSON.stringfy(data)
+                    success: function(response) {
+                        $("#response").html(response); 
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", error);
+                    }
+                });
+            });
+        </pre>
+        -> Form to send post Request 
+    </p>
+    <p>
+        <pre>
+            $.ajax({
+                url: "process.php",
+                type: "POST",
+                data: { name: "John Doe" },
+            
+                // 🚀 Fired BEFORE the request is sent
+                beforeSend: function() {
+                    console.log("Before sending AJAX request...");
+                },
+            
+                // ✅ Fired when the request is successful
+                success: function(response) {
+                    console.log("Success:", response);
+                },
+            
+                // ❌ Fired if the request fails
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", error);
+                },
+            
+                // 🔄 Fired when the request is complete (both success & error)
+                complete: function() {
+                    console.log("AJAX request completed.");
+                }
+            });            
+        </pre> -> added extra function like beforeSend and complete in the ajax request
+    </p>
+
+
+</body>
+</html>
